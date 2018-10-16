@@ -19,7 +19,7 @@ NEWSPIDER_MODULE = 'xueqiu_crawl.spiders'
 #USER_AGENT = 'xueqiu_crawl (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 
 #setting of proxy
@@ -30,7 +30,7 @@ RETRY_HTTP_CODES = [500, 503, 504, 400, 403, 404, 408]
 
 DOWNLOADER_MIDDLEWARES = {
     'scrapy.downloadermiddlewares.retry.RetryMiddleware': 90,
-    'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 110,
+    # 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 110,
     "xueqiu_crawl.middlewares.UserAgentMiddleware": 401
 }
 
@@ -51,6 +51,8 @@ PROXY_MODE = 0
 # CUSTOM_PROXY = "http://host1:port"
 
 
+
+COOKIES_DEBUG = True
 
 
 

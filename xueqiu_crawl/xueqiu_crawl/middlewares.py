@@ -5,12 +5,14 @@
 #   作者：殷帅　yscoder@foxmail.com
 # ------------------------------------------
 
-from scrapy import signals
-import json
+import cookielib
 import logging
-import os
 import random
+
+from scrapy import signals
+from scrapy.http import Request, FormRequest
 from user_agents import agents
+
 """
 import os
 import random
@@ -24,7 +26,6 @@ from cookies import initCookie, updateCookie, removeCookie
 from user_agents import agents
 """
 
-
 logger = logging.getLogger(__name__)
 
 
@@ -33,15 +34,22 @@ class UserAgentMiddleware(object):
 
     def process_request(self, request, spider):
         agent = random.choice(agents)
-        request.headers["User-Agent"] = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36"
-        request.headers["Accept"] = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8"
-        request.headers = {
-            'Accept-Language': ' zh-CN,zh;q=0.9', 'Accept-Encoding': ' gzip, deflate, br',
-            'X-Requested-With': ' XMLHttpRequest', 'Host': ' xueqiu.com', 'Accept': ' */*',
-            'User-Agent': ' Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36',
-            'Connection': ' keep-alive',
-            'Pragma': ' no-cache', 'Cache-Control': ' no-cache', 'Referer': ' https://xueqiu.com/u/1955602780'
-        }
+        print agent
+        request.headers[
+            "User-Agent"] = agent
+
+
+class LoginMiddleware(object):
+    """登录中间件"""
+    # session = requests.session()
+    # session.cookies = cookielib.LWPCookieJar(filename="cookies")
+
+    def process_request(self, FormRequest):
+        FormRequest.headers.update({'Host': 'xueqiu.com',
+                                'Referer': 'https://xueqiu.com/',
+                                'Origin': 'https://xueqiu.com'})
+
+
 
 
 
