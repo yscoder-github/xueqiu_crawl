@@ -29,26 +29,6 @@ from user_agents import agents
 logger = logging.getLogger(__name__)
 
 
-class UserAgentMiddleware(object):
-    """用户代理中间件"""
-
-    def process_request(self, request, spider):
-        agent = random.choice(agents)
-        print agent
-        request.headers[
-            "User-Agent"] = agent
-
-
-class LoginMiddleware(object):
-    """登录中间件"""
-    # session = requests.session()
-    # session.cookies = cookielib.LWPCookieJar(filename="cookies")
-
-    def process_request(self, FormRequest):
-        FormRequest.headers.update({'Host': 'xueqiu.com',
-                                'Referer': 'https://xueqiu.com/',
-                                'Origin': 'https://xueqiu.com'})
-
 
 
 

@@ -52,7 +52,7 @@ PROXY_MODE = 0
 
 
 
-COOKIES_DEBUG = True
+COOKIES_DEBUG = False
 
 
 
