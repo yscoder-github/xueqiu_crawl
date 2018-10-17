@@ -7,9 +7,8 @@ author: yscoder@foxmail.com
 """
 
 from scrapy.http import Request
-from scrapy.linkextractors import LinkExtractor
-from scrapy.selector import Selector
-from scrapy.spiders import Spider, Rule
+from scrapy.spiders import Spider
+from xueqiu_crawl.items import TopicBriefItem, TopicInfoItem
 from urlparse import urljoin, urlparse
 import json
 import logging
@@ -49,8 +48,36 @@ class XueQiuSpider(Spider):
             if next_max_id == -1 or topic_list == []:
                 return
             for topic in topic_list:
-                topic_brief_url = urljoin(self._host_url, json.loads(topic.get('data')).get('target'))
-                yield Request(topic_brief_url, callback=self.parse_response)
+                topic_item = TopicBriefItem()
+                data = json.loads(topic.get('data'))
+                topic_brief_url = urljoin(self._host_url, data.get('target'))
+                topic_item['feedback'] = data.get('feedback')
+                topic_item['pic'] = data.get('pic')
+                topic_item['reply_count'] = data.get('reply_count')
+                topic_item['id'] = data.get('id')
+                topic_item['topic_pic'] = data.get('topic_pic')
+                topic_item['title'] = data.get('title')
+                topic_item['first_pic'] = data.get('first_pic')
+                topic_item['cover_pic'] = data.get('cover_pic')
+                topic_item['source'] = data.get('source')
+                topic_item['link_stock_desc'] = data.get('link_stock_desc')
+                topic_item['score'] = data.get('score')
+                topic_item['retweet_count'] = data.get('retweet_count')
+                topic_item['topic_pic_hd'] = data.get('topic_pic_hd')
+                topic_item['description'] = data.get('description')
+                topic_item['reweeted_status'] = data.get('reweeted_status')
+                topic_item['view_count'] = data.get('view_count')
+                topic_item['quote_cards'] = data.get('quote_cards')
+                topic_item['topic_title'] = data.get('topic_title')
+                topic_item['user_profile'] = data.get('profile')
+                topic_item['target'] = data.get('target')
+                topic_item['created_at'] = data.get('created_at')
+                topic_item['promotion'] = data.get('promotion')
+                topic_item['tag'] = data.get('tag')
+                topic_item['link_stock_symbol'] = data.get('link_stock_symbol')
+                topic_item['topic_desc'] = data.get('topic_desc')
+                yield topic_item  # 存储
+                yield Request(topic_brief_url, callback=self.parse_response)   # 发出请求
             yield Request(self._topic_url.format(next_max_id, code),
                           meta={'code': code},
                           callback=self.parse_request)
@@ -64,9 +91,15 @@ class XueQiuSpider(Spider):
                           meta={'code': code},
                           callback=self.parse_request)
 
-
     def parse_response(self, response):
-        pass
+        """解析文章内容"""
+        target = urlparse(response.url).path  # 获取文章地址
+        topic_info_item = TopicInfoItem()
+        topic_info_item['target'] = target
+        topic_info_item['text'] = response.text
+        yield topic_info_item
+
+
 
 
     def on_idle(self, spider):

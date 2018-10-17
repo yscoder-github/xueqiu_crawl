@@ -30,9 +30,12 @@ RETRY_HTTP_CODES = [500, 503, 504, 400, 403, 404, 408]
 
 DOWNLOADER_MIDDLEWARES = {
     'scrapy.downloadermiddlewares.retry.RetryMiddleware': 90,
-    # 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 110,
-    "xueqiu_crawl.middlewares.UserAgentMiddleware": 401
+    'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 110,
+    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': 1,
 }
+
+DOWNLOAD_TIMEOUT = 100
+
 
 # Proxy list containing entries like
 # http://host1:port
@@ -53,6 +56,7 @@ PROXY_MODE = 0
 
 
 COOKIES_DEBUG = False
+USER_AGENT = "Mozilla/5.0 (Linux; U; Android 2.3.6; en-us; Nexus S Build/GRK39F) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1"
 
 
 
@@ -60,19 +64,17 @@ COOKIES_DEBUG = False
 
 
 
-
-
+MONGO_URI="mongodb://root:111111@127.0.0.1:27017"
 
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-#CONCURRENT_REQUESTS = 32
-
+CONCURRENT_REQUESTS = 100
 # Configure a delay for requests for the same website (default: 0)
 # See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-#DOWNLOAD_DELAY = 3
+DOWNLOAD_DELAY = 0.1
 # The download delay setting will honor only one of:
-#CONCURRENT_REQUESTS_PER_DOMAIN = 16
+CONCURRENT_REQUESTS_PER_DOMAIN = 100
 #CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
@@ -107,9 +109,9 @@ COOKIES_DEBUG = False
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'xueqiu_crawl.pipelines.XueqiuCrawlPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'xueqiu_crawl.pipelines.XueqiuCrawlPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
