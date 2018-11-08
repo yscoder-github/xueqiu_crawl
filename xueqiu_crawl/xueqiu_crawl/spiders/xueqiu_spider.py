@@ -21,9 +21,7 @@ class XueQiuSpider(Spider):
     name = "xueqiu"
     _topic_url = \
         "https://xueqiu.com/v4/statuses/public_timeline_by_category.json?since_id=-1&max_id={}&count=20&category={}"
-
-    _relation_url = \
-        "https: // xueqiu.com / friendships / followers.json?uid={}&pageNo={}"
+    
     _host_url = 'https://xueqiu.com/'
     start_urls = (
        _host_url,
