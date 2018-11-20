@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
-
-# Define your item pipelines here
-#
-# Don't forget to add your pipeline to the ITEM_PIPELINES setting
-# See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
+# ------------------------------------------
+#   版本：1.0
+#   日期：2018-10-13
+#   作者：殷帅　yscoder@foxmail.com
+# ------------------------------------------
+# Define my item pipelines here
 from db import MongoDB
 from items import TopicBriefItem, TopicInfoItem
 
@@ -19,4 +20,6 @@ class XueqiuCrawlPipeline(object):
         elif isinstance(item, TopicInfoItem):
             if mongo_ins.check_topic_info_exisit(item.get('target')) is False:
                 mongo_ins.topic_info.insert(dict(item))
+        else:
+            raise ValueError("unknown item instance")
 

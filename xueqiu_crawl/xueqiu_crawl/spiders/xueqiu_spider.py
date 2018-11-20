@@ -12,7 +12,15 @@ from xueqiu_crawl.items import TopicBriefItem, TopicInfoItem
 from urlparse import urljoin, urlparse
 import json
 import logging
+from exceptions import Exception
+
 logger = logging.getLogger(__name__)
+
+logging.basicConfig(level=logging.DEBUG,  # 控制台打印的日志级别
+                    filename='debug.log',
+                    filemode='a',  # 模式，有w和a，w就是写模式，每次都会重新写日志，覆盖之前的日志
+                    format='%(asctime)s - %(pathname)s[line:%(lineno)d] - %(levelname)s: %(message)s'
+                    )
 
 
 class XueQiuSpider(Spider):
@@ -45,6 +53,15 @@ class XueQiuSpider(Spider):
             next_max_id = json_data.get('next_max_id', -1)
             topic_list = json_data.get('list', [])
             code = response.meta['code']
+
+
+
+            info =  '{}{}'.format(code, next_max_id)
+            logger.info(info)
+            return
+
+
+
             print code
             if next_max_id == -1 or topic_list == []:
                 return
@@ -82,8 +99,8 @@ class XueQiuSpider(Spider):
             yield Request(self._topic_url.format(next_max_id, code),
                           meta={'code': code},
                           callback=self.parse_request)
-        except:
-            raise
+        except Exception, e:
+            logger.exception(e)
 
     def parse(self, response):
         for code in self._category:
@@ -108,46 +125,3 @@ class XueQiuSpider(Spider):
         is remaining in the pipeline """
         # spider.compute_pagerank()
         pass
-
-    """
-    def parse_detail(self, response):
-        woaidu_item = WoaiduCrawlerItem()
-
-        response_selector = HtmlXPathSelector(response)
-        woaidu_item['book_name'] = list_first_item(
-            response_selector.select('//div[@class="zizida"][1]/text()').extract())
-        woaidu_item['author'] = [
-            list_first_item(response_selector.select('//div[@class="xiaoxiao"][1]/text()').extract())[5:].strip(), ]
-        woaidu_item['book_description'] = list_first_item(
-            response_selector.select('//div[@class="lili"][1]/text()').extract()).strip()
-        woaidu_item['book_covor_image_url'] = list_first_item(
-            response_selector.select('//div[@class="hong"][1]/img/@src').extract())
-
-        download = []
-        for i in response_selector.select('//div[contains(@class,"xiazai_xiao")]')[1:]:
-            download_item = {}
-            download_item['url'] = \
-                strip_null( \
-                    deduplication( \
-                        [ \
-                            list_first_item(i.select('./div')[0].select('./a/@href').extract()), \
-                            list_first_item(i.select('./div')[1].select('./a/@href').extract()) \
-                            ] \
-                        ) \
-                    )
-
-            download_item['progress'] = list_first_item(i.select('./div')[2].select('./text()').extract())
-            download_item['update_time'] = list_first_item(i.select('./div')[3].select('./text()').extract())
-            download_item['source_site'] = \
-                [ \
-                    list_first_item(i.select('./div')[4].select('./a/text()').extract()), \
-                    list_first_item(i.select('./div')[4].select('./a/@href').extract()) \
-                    ] \
- \
-            download.append(download_item)
-
-        woaidu_item['book_download'] = download
-        woaidu_item['original_url'] = response.url
-
-        yield woaidu_item
-        """

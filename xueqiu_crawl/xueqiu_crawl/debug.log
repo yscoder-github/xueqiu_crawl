@@ -1,0 +1,74 @@
+2018-11-20 23:42:32,926 - /usr/local/lib/python2.7/dist-packages/Scrapy-1.5.1-py2.7.egg/scrapy/utils/log.py[line:146] - INFO: Scrapy 1.5.1 started (bot: xueqiu_crawl)
+2018-11-20 23:42:32,927 - /usr/local/lib/python2.7/dist-packages/Scrapy-1.5.1-py2.7.egg/scrapy/utils/log.py[line:149] - INFO: Versions: lxml 3.5.0.0, libxml2 2.9.3, cssselect 1.0.3, parsel 1.5.1, w3lib 1.19.0, Twisted 18.9.0, Python 2.7.12 (default, Nov 12 2018, 14:36:49) - [GCC 5.4.0 20160609], pyOpenSSL 18.0.0 (OpenSSL 1.1.0i  14 Aug 2018), cryptography 2.3.1, Platform Linux-4.15.0-39-generic-x86_64-with-Ubuntu-16.04-xenial
+2018-11-20 23:42:32,932 - /usr/local/lib/python2.7/dist-packages/Scrapy-1.5.1-py2.7.egg/scrapy/crawler.py[line:38] - INFO: Overridden settings: {'NEWSPIDER_MODULE': 'xueqiu_crawl.spiders', 'CONCURRENT_REQUESTS_PER_DOMAIN': 100, 'CONCURRENT_REQUESTS': 100, 'SPIDER_MODULES': ['xueqiu_crawl.spiders'], 'RETRY_HTTP_CODES': [500, 503, 504, 400, 403, 404, 408], 'BOT_NAME': 'xueqiu_crawl', 'DOWNLOAD_TIMEOUT': 100, 'RETRY_TIMES': 10, 'DOWNLOAD_DELAY': 0.1, 'USER_AGENT': 'Mozilla/5.0 (Linux; U; Android 2.3.6; en-us; Nexus S Build/GRK39F) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1'}
+2018-11-20 23:42:32,948 - /usr/local/lib/python2.7/dist-packages/Scrapy-1.5.1-py2.7.egg/scrapy/middleware.py[line:53] - INFO: Enabled extensions:
+['scrapy.extensions.memusage.MemoryUsage',
+ 'scrapy.extensions.logstats.LogStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.corestats.CoreStats']
+2018-11-20 23:42:32,978 - /usr/local/lib/python2.7/dist-packages/Scrapy-1.5.1-py2.7.egg/scrapy/middleware.py[line:53] - INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2018-11-20 23:42:32,980 - /usr/local/lib/python2.7/dist-packages/Scrapy-1.5.1-py2.7.egg/scrapy/middleware.py[line:53] - INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2018-11-20 23:42:33,008 - /usr/local/lib/python2.7/dist-packages/Scrapy-1.5.1-py2.7.egg/scrapy/middleware.py[line:53] - INFO: Enabled item pipelines:
+['xueqiu_crawl.pipelines.XueqiuCrawlPipeline']
+2018-11-20 23:42:33,008 - /usr/local/lib/python2.7/dist-packages/Scrapy-1.5.1-py2.7.egg/scrapy/core/engine.py[line:256] - INFO: Spider opened
+2018-11-20 23:42:33,011 - /usr/local/lib/python2.7/dist-packages/Scrapy-1.5.1-py2.7.egg/scrapy/extensions/logstats.py[line:48] - INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2018-11-20 23:42:33,012 - /usr/local/lib/python2.7/dist-packages/Scrapy-1.5.1-py2.7.egg/scrapy/extensions/telnet.py[line:60] - DEBUG: Telnet console listening on 127.0.0.1:6024
+2018-11-20 23:42:33,136 - /usr/local/lib/python2.7/dist-packages/Scrapy-1.5.1-py2.7.egg/scrapy/core/engine.py[line:238] - DEBUG: Crawled (200) <GET https://xueqiu.com/> (referer: None)
+2018-11-20 23:42:33,360 - /usr/local/lib/python2.7/dist-packages/Scrapy-1.5.1-py2.7.egg/scrapy/core/engine.py[line:238] - DEBUG: Crawled (200) <GET https://xueqiu.com/v4/statuses/public_timeline_by_category.json?since_id=-1&max_id=-1&count=20&category=105> (referer: https://xueqiu.com/)
+2018-11-20 23:42:33,463 - /usr/local/lib/python2.7/dist-packages/Scrapy-1.5.1-py2.7.egg/scrapy/core/engine.py[line:238] - DEBUG: Crawled (200) <GET https://xueqiu.com/v4/statuses/public_timeline_by_category.json?since_id=-1&max_id=-1&count=20&category=104> (referer: https://xueqiu.com/)
+2018-11-20 23:42:33,464 - /home/yinshuai/nlp/xueqiu_crawl/xueqiu_crawl/xueqiu_crawl/spiders/xueqiu_spider.py[line:60] - INFO: 105195945
+2018-11-20 23:42:33,567 - /home/yinshuai/nlp/xueqiu_crawl/xueqiu_crawl/xueqiu_crawl/spiders/xueqiu_spider.py[line:60] - INFO: 104195706
+2018-11-20 23:42:33,604 - /usr/local/lib/python2.7/dist-packages/Scrapy-1.5.1-py2.7.egg/scrapy/core/engine.py[line:238] - DEBUG: Crawled (200) <GET https://xueqiu.com/v4/statuses/public_timeline_by_category.json?since_id=-1&max_id=-1&count=20&category=101> (referer: https://xueqiu.com/)
+2018-11-20 23:42:33,707 - /home/yinshuai/nlp/xueqiu_crawl/xueqiu_crawl/xueqiu_crawl/spiders/xueqiu_spider.py[line:60] - INFO: 101195807
+2018-11-20 23:42:33,749 - /usr/local/lib/python2.7/dist-packages/Scrapy-1.5.1-py2.7.egg/scrapy/core/engine.py[line:238] - DEBUG: Crawled (200) <GET https://xueqiu.com/v4/statuses/public_timeline_by_category.json?since_id=-1&max_id=-1&count=20&category=111> (referer: https://xueqiu.com/)
+2018-11-20 23:42:33,851 - /home/yinshuai/nlp/xueqiu_crawl/xueqiu_crawl/xueqiu_crawl/spiders/xueqiu_spider.py[line:60] - INFO: 111195472
+2018-11-20 23:42:33,894 - /usr/local/lib/python2.7/dist-packages/Scrapy-1.5.1-py2.7.egg/scrapy/core/engine.py[line:238] - DEBUG: Crawled (200) <GET https://xueqiu.com/v4/statuses/public_timeline_by_category.json?since_id=-1&max_id=-1&count=20&category=102> (referer: https://xueqiu.com/)
+2018-11-20 23:42:33,964 - /usr/local/lib/python2.7/dist-packages/Scrapy-1.5.1-py2.7.egg/scrapy/core/engine.py[line:238] - DEBUG: Crawled (200) <GET https://xueqiu.com/v4/statuses/public_timeline_by_category.json?since_id=-1&max_id=-1&count=20&category=6> (referer: https://xueqiu.com/)
+2018-11-20 23:42:33,997 - /home/yinshuai/nlp/xueqiu_crawl/xueqiu_crawl/xueqiu_crawl/spiders/xueqiu_spider.py[line:60] - INFO: 102195727
+2018-11-20 23:42:34,054 - /usr/local/lib/python2.7/dist-packages/Scrapy-1.5.1-py2.7.egg/scrapy/core/engine.py[line:238] - DEBUG: Crawled (200) <GET https://xueqiu.com/v4/statuses/public_timeline_by_category.json?since_id=-1&max_id=-1&count=20&category=113> (referer: https://xueqiu.com/)
+2018-11-20 23:42:34,067 - /home/yinshuai/nlp/xueqiu_crawl/xueqiu_crawl/xueqiu_crawl/spiders/xueqiu_spider.py[line:60] - INFO: 6693045
+2018-11-20 23:42:34,156 - /home/yinshuai/nlp/xueqiu_crawl/xueqiu_crawl/xueqiu_crawl/spiders/xueqiu_spider.py[line:60] - INFO: 113194852
+2018-11-20 23:42:34,187 - /usr/local/lib/python2.7/dist-packages/Scrapy-1.5.1-py2.7.egg/scrapy/core/engine.py[line:238] - DEBUG: Crawled (200) <GET https://xueqiu.com/v4/statuses/public_timeline_by_category.json?since_id=-1&max_id=-1&count=20&category=110> (referer: https://xueqiu.com/)
+2018-11-20 23:42:34,290 - /home/yinshuai/nlp/xueqiu_crawl/xueqiu_crawl/xueqiu_crawl/spiders/xueqiu_spider.py[line:60] - INFO: 110193585
+2018-11-20 23:42:34,359 - /usr/local/lib/python2.7/dist-packages/Scrapy-1.5.1-py2.7.egg/scrapy/core/engine.py[line:238] - DEBUG: Crawled (200) <GET https://xueqiu.com/v4/statuses/public_timeline_by_category.json?since_id=-1&max_id=-1&count=20&category=-1> (referer: https://xueqiu.com/)
+2018-11-20 23:42:34,464 - /home/yinshuai/nlp/xueqiu_crawl/xueqiu_crawl/xueqiu_crawl/spiders/xueqiu_spider.py[line:60] - INFO: -120315439
+2018-11-20 23:42:34,524 - /usr/local/lib/python2.7/dist-packages/Scrapy-1.5.1-py2.7.egg/scrapy/core/engine.py[line:238] - DEBUG: Crawled (200) <GET https://xueqiu.com/v4/statuses/public_timeline_by_category.json?since_id=-1&max_id=-1&count=20&category=114> (referer: https://xueqiu.com/)
+2018-11-20 23:42:34,628 - /home/yinshuai/nlp/xueqiu_crawl/xueqiu_crawl/xueqiu_crawl/spiders/xueqiu_spider.py[line:60] - INFO: 114195628
+2018-11-20 23:42:34,632 - /usr/local/lib/python2.7/dist-packages/Scrapy-1.5.1-py2.7.egg/scrapy/core/engine.py[line:295] - INFO: Closing spider (finished)
+2018-11-20 23:42:34,634 - /usr/local/lib/python2.7/dist-packages/Scrapy-1.5.1-py2.7.egg/scrapy/statscollectors.py[line:47] - INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 7078,
+ 'downloader/request_count': 11,
+ 'downloader/request_method_count/GET': 11,
+ 'downloader/response_bytes': 110374,
+ 'downloader/response_count': 11,
+ 'downloader/response_status_count/200': 11,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2018, 11, 20, 15, 42, 34, 633432),
+ 'log_count/DEBUG': 12,
+ 'log_count/INFO': 17,
+ 'memusage/max': 56643584,
+ 'memusage/startup': 56643584,
+ 'request_depth_max': 1,
+ 'response_received_count': 11,
+ 'scheduler/dequeued': 11,
+ 'scheduler/dequeued/memory': 11,
+ 'scheduler/enqueued': 11,
+ 'scheduler/enqueued/memory': 11,
+ 'start_time': datetime.datetime(2018, 11, 20, 15, 42, 33, 11371)}
+2018-11-20 23:42:34,635 - /usr/local/lib/python2.7/dist-packages/Scrapy-1.5.1-py2.7.egg/scrapy/core/engine.py[line:326] - INFO: Spider closed (finished)

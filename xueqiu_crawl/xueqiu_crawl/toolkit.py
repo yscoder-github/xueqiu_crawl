@@ -7,12 +7,11 @@
 
 import codecs
 import re
-import sys
 from functools import wraps
 
 
 def singleton(cls):
-    """单利装饰器"""
+    """单例装饰器"""
     instances = {}
 
     @wraps(cls)
@@ -24,9 +23,10 @@ def singleton(cls):
     return getinstance
 
 
+class Toolkit:
+    def __init__(self):
+        pass
 
-
-class Toolkit():
     @staticmethod
     def save2file(filename, content):
         # 保存为文件
