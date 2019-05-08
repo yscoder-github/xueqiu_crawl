@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*-coding:utf-8-*-
 """
 In this module, you can find the XueQiuSpider class.
@@ -9,10 +9,9 @@ author: yscoder@foxmail.com
 from scrapy.http import Request
 from scrapy.spiders import Spider
 from xueqiu_crawl.items import TopicBriefItem, TopicInfoItem
-from urlparse import urljoin, urlparse
+from urllib.parse import urlparse, urljoin
 import json
 import logging
-from exceptions import Exception
 
 logger = logging.getLogger(__name__)
 
@@ -59,10 +58,6 @@ class XueQiuSpider(Spider):
             info =  '{}{}'.format(code, next_max_id)
             logger.info(info)
             return
-
-
-
-            print code
             if next_max_id == -1 or topic_list == []:
                 return
             for topic in topic_list:
@@ -99,7 +94,7 @@ class XueQiuSpider(Spider):
             yield Request(self._topic_url.format(next_max_id, code),
                           meta={'code': code},
                           callback=self.parse_request)
-        except Exception, e:
+        except Exception as  e:
             logger.exception(e)
 
     def parse(self, response):

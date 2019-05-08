@@ -5,7 +5,7 @@
 #   作者：殷帅　yscoder@foxmail.com
 # ------------------------------------------
 # Define my item pipelines here
-from db import MongoDB
+import db
 from items import TopicBriefItem, TopicInfoItem
 
 
