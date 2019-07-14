@@ -15,9 +15,9 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-logging.basicConfig(level=logging.DEBUG,  # 控制台打印的日志级别
+logging.basicConfig(level=logging.DEBUG, 
                     filename='debug.log',
-                    filemode='a',  # 模式，有w和a，w就是写模式，每次都会重新写日志，覆盖之前的日志
+                    filemode='a', 
                     format='%(asctime)s - %(pathname)s[line:%(lineno)d] - %(levelname)s: %(message)s'
                     )
 
